@@ -1,0 +1,21 @@
+version: "3.9"
+services:
+  db:
+    container_name: db
+    image: postgres:16.1
+    restart: always
+    # command: -p 5432
+    # expose:
+    #   - 5432
+    environment:
+      POSTGRES_DB: "fastapidb"
+      POSTGRES_USER: "postgres"
+      POSTGRES_PASSWORD: "postgres"
+      POSTGRES_HOST_AUTH_METHOD: trust
+    volumes:
+      - fastapi-postgres:/var/lib/postgresql
+    ports:
+      - "5432:5432"
+
+volumes:
+  fastapi-postgres:
